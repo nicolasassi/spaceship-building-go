@@ -1,0 +1,25 @@
+Golfinho - 11-12-2030 12:30:30
+
+Rapazes, identifiquei alguns dos sistemas com mau funcionamento. Segue a análise e instruções para concerto:
+
+Engine -
+
+    A struct que representa nosso motor parece ainda existir, mas o vírus apagou seus métodos!
+    Sem isso a nave não ira sair do lugar.
+    - Façam um constructor para Engine recebendo todos seus campos. Se o campo fuel for 0 isOn deve sempre ser false.
+    - Façam uma função GetFuel. Essa função deve retornar a quantidade de combustível como um inteiro.
+        Se a nave não tiver combustível essa função deve alterar o valor de IsOn para false caso este seja true
+        "desligando" a nave.
+    - Faça um getter para o campo isOn
+
+Cripto -
+
+    Criptografamos todas as nossas mensagens para o caso de alguma organização (terrestre ou não) estar tentando nos
+    espionar. A struct que representa nossa criptografia parece ainda existir, mas o vírus apagou seus métodos! Sem isso
+    toda nossa comunicação pode estar sendo vigiada. Tenham cuidado!
+    - Façam um constructor para Cripto que não recebe nada.
+    - Façam uma função CheckPassword. Essa função deve receber uma senha tipo texto e checar se ela bate com a senha no
+    package. Se for igual deve retornar true do contrário false. Essa função deve também aumentar o valor do campo tries
+    em um a cada nova tentativa. Se o campo tries for maior do que 3 deve também alterar o campo underBruteForceAttack
+    para true. Se senha for igual os campos tries e underBruteForceAttack devem voltar ao default.
+    - Faça um getter para o campo underBruteForceAttack.
