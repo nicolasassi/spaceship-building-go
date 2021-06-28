@@ -1,17 +1,21 @@
 package main
 
 import (
+	"github.com/nicolasassi/spaceship-building-go/spaceship/armory"
+	"github.com/nicolasassi/spaceship-building-go/spaceship/armory/lasers"
 	"github.com/nicolasassi/spaceship-building-go/spaceship/armory/rockets"
 	"math/rand"
 )
 
-func Attack(r *rockets.Rockets) {
+func attack(arms ...armory.Armorier) {
 	var x, y float32
 	for i := 0; i < 3; i++ {
 		x, y = generateRandomPoints()
-		if err := r.Shoot(x, y); err != nil {
-			if err == rockets.RequiresReloading {
-				r.Reload(1)
+		for _, arm := range arms {
+			if err := arm.Shoot(x, y); err != nil {
+				if err == armory.RequiresReloading {
+					arm.Reload(1)
+				}
 			}
 		}
 	}
@@ -19,7 +23,8 @@ func Attack(r *rockets.Rockets) {
 
 func main() {
 	r := rockets.NewRockets(1)
-	Attack(r)
+	l := lasers.NewLasers(1)
+	attack(r, l)
 }
 
 func generateRandomPoints() (float32, float32) {

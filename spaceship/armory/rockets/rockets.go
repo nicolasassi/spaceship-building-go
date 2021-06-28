@@ -1,12 +1,10 @@
 package rockets
 
 import (
-	"errors"
 	"fmt"
+	"github.com/nicolasassi/spaceship-building-go/spaceship/armory"
 	"time"
 )
-
-var RequiresReloading = errors.New("requires reloading")
 
 type Rockets struct {
 	ammo int
@@ -22,7 +20,7 @@ func (r *Rockets) Shoot(x, y float32) error {
 		r.ammo--
 		return nil
 	}
-	return RequiresReloading
+	return armory.RequiresReloading
 }
 
 func (r *Rockets) Reload(ammo int) {
